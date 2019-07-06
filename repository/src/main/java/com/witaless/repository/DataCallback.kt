@@ -1,8 +1,8 @@
 package com.witaless.repository
 
-interface IDataCallback<T> {
+interface DataCallback<T> {
 
-    fun onSuccess(resultList: ArrayList<T>)
+    fun onSuccess(result: T)
     fun onError(error: Error)
 
     enum class Error {
