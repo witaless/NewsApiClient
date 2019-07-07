@@ -6,6 +6,10 @@ android {
     compileSdkVersion 28
 
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 28
@@ -20,6 +24,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        buildTypes.each {
+            it.buildConfigField 'String', 'API_KEY', "\"acb6b0d6ba4348008d6b5212b06b7163\""
         }
     }
 

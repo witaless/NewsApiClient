@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
+import com.witaless.repository.DataCallback
+import com.witaless.repository.model.Article
+import com.witaless.repository.network.NetworkHelperImpl
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,5 +35,17 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         textMessage = findViewById(R.id.message)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+
+        NetworkHelperImpl().getTopHeadlines(dataCallback =
+        object : DataCallback<ArrayList<Article>> {
+            override fun onSuccess(result: ArrayList<Article>) {
+                println(result.toString())
+            }
+
+            override fun onError(error: DataCallback.Error) {
+                println(error.name)
+            }
+
+        })
     }
 }

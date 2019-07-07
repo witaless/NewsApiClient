@@ -1,11 +1,9 @@
-package com.witaless.repository.repository
+package com.witaless.repository.network
 
 import com.witaless.repository.DataCallback
 import com.witaless.repository.model.Article
-import com.witaless.repository.network.ApiCall
 
-interface NewsRepository {
-
+interface NetworkHelper {
     fun getTopHeadlines(
         page: Int = ApiCall.DEFAULT_PAGE,
         country: String = ApiCall.DEFAULT_COUNTRY_LANGUAGE,
@@ -19,12 +17,4 @@ interface NewsRepository {
         language: String = ApiCall.DEFAULT_COUNTRY_LANGUAGE,
         dataCallback: DataCallback<ArrayList<Article>>
     )
-
-    fun getLikedArticles(dataCallback: DataCallback<ArrayList<Article>>)
-
-    fun getArticle(id: Int, dataCallback: DataCallback<Article>)
-
-    fun addArticleToLiked(id: Int)
-
-    fun removeArticleFromLiked(id: Int)
 }

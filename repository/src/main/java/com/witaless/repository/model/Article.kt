@@ -3,7 +3,6 @@ package com.witaless.repository.model
 import com.google.gson.annotations.SerializedName
 
 data class Article(
-
     val id: Long?,
 
     @SerializedName("source")
